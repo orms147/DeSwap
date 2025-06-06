@@ -99,7 +99,7 @@ export function useToast() {
   }, [])
   
   useEffect(() => {
-    const timeouts: NodeJS.Timeout[] = []
+    const timeouts: number[] = [] // Thay đổi từ NodeJS.Timeout[] thành number[]
 
     state.toasts.forEach((toast) => {
       if (toast.duration === Infinity) {
