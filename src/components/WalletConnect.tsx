@@ -1,11 +1,23 @@
-
+\DEX\DeSwap\src\components\WalletConnect.tsx
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Wallet, LogOut } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const WalletConnect = ({ account, isConnected, connectWallet, disconnectWallet }) => {
+interface WalletConnectProps {
+  account: string | null;
+  isConnected: boolean | null;
+  connectWallet: () => void;
+  disconnectWallet: () => void;
+}
+
+const WalletConnect: React.FC<WalletConnectProps> = ({ 
+  account, 
+  isConnected, 
+  connectWallet, 
+  disconnectWallet 
+}) => {
   if (isConnected) {
     return (
       <motion.div
