@@ -1,13 +1,31 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-import { Droplets, Loader2, Plus } from 'lucide-react';
+import { Loader2, TrendingUp, ArrowDownUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const SwapInterface = ({ swapTokens, getAmountsOut, loading, account }) => {
+type SwapInterfaceProps = {
+  swapTokens: (
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: string,
+    minOutput: string,
+    account: string
+  ) => Promise<void>;
+  getAmountsOut: (amountIn: string, path: string[]) => Promise<string[]>;
+  loading: boolean;
+  account: string;
+};
+
+const SwapInterface = ({
+  swapTokens,
+  getAmountsOut,
+  loading,
+  account,
+}: SwapInterfaceProps) => {
   const [swapData, setSwapData] = useState({
     tokenIn: '',
     tokenOut: '',
@@ -36,7 +54,7 @@ const SwapInterface = ({ swapTokens, getAmountsOut, loading, account }) => {
     return () => clearTimeout(debounceTimer);
   }, [swapData.amountIn, swapData.tokenIn, swapData.tokenOut, getAmountsOut]);
 
-  const handleSwap = async (e) => {
+  const handleSwap = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!swapData.tokenIn || !swapData.tokenOut || !swapData.amountIn || !account) return;
     

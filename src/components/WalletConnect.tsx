@@ -1,7 +1,6 @@
-\DEX\DeSwap\src\components\WalletConnect.tsx
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
 import { Wallet, LogOut } from 'lucide-react';
 import { motion } from 'framer-motion';
 
