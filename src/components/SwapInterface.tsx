@@ -17,7 +17,7 @@ type SwapInterfaceProps = {
   ) => Promise<void>;
   getAmountsOut: (amountIn: string, path: string[]) => Promise<string[]>;
   loading: boolean;
-  account: string;
+  account: string | null;
 };
 
 const SwapInterface = ({
@@ -31,7 +31,7 @@ const SwapInterface = ({
     tokenOut: '',
     amountIn: '',
     amountOutMin: '',
-    slippage: '0.5',
+    slippage: '0.3',
   });
   const [estimatedOutput, setEstimatedOutput] = useState('');
 
