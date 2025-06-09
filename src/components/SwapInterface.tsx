@@ -20,12 +20,7 @@ type SwapInterfaceProps = {
   account: string | null;
 };
 
-const SwapInterface = ({
-  swapTokens,
-  getAmountsOut,
-  loading,
-  account,
-}: SwapInterfaceProps) => {
+const SwapInterface = ({swapTokens, getAmountsOut, loading, account,}: SwapInterfaceProps) => {
   const [swapData, setSwapData] = useState({
     tokenIn: '',
     tokenOut: '',
